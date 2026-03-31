@@ -25,7 +25,7 @@ if (flutterVersionName == null) {
 
 android {
     namespace "com.example.flutterappkideld"
-    compileSdk 34
+    compileSdk 35
     ndkVersion flutter.ndkVersion
 
     compileOptions {
@@ -48,7 +48,7 @@ android {
         applicationId "com.example.flutterappkideld"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
-        minSdkVersion 23
+        minSdkVersion flutter.minSdkVersion
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
@@ -58,11 +58,6 @@ android {
         resolutionStrategy {
             force 'androidx.core:core-ktx:1.7.0'  // Replace with the latest compatible versions if needed
             force 'androidx.appcompat:appcompat:1.4.0'
-            eachDependency {
-                if ((requested.group == "org.jetbrains.kotlin") && (requested.name.startsWith("kotlin-stdlib"))) {
-                    useVersion("1.8.0")
-                }
-            }
         }
     }
     buildTypes {
@@ -80,6 +75,6 @@ flutter {
 }
 
 dependencies {
-    implementation 'com.android.support:multidex:1.0.3'
+    implementation 'androidx.multidex:multidex:2.0.1'
 }
 apply plugin: 'com.google.gms.google-services'
